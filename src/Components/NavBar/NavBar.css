@@ -1,0 +1,56 @@
+.nav-parent{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-evenly;
+
+    width: 100%;
+    height: 62.5px;
+    background-color: white;
+    padding: 2px 0px;
+}
+
+/* logo */
+.logo{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+.logo-name{
+    margin: 0;
+    font-style: italic;
+}
+.explore-products{
+    font-size: 12px;
+}
+/* search */
+.search-bar{
+    position: relative;
+    display: inline-block;
+}
+.search-icon{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: rgba(241, 242, 244, 1.00);
+    opacity: 0.5;
+}
+.search-input{
+    height: 35px;
+    width: 550px;
+    padding: 0px 40px;
+
+    background-color: rgba(241, 242, 244, 1.00);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+/* cart , goto-admin*/
+.cart , .goto-admin{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
