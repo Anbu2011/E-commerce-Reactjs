@@ -6,13 +6,12 @@ const initialState = {
     categoryLoading : false,
 }
 
-export const getAllCategory = createAsyncThunk('category/gettingAllCategory', async(_, {rejectWithValue}) =>{
+export const getAllCategory = createAsyncThunk('category/gettingAllCategory', async() =>{
     try{
         const response = await axios.get('https://fakestoreapi.com/products/categories')
         return response.data
     } catch{
         console.error("Api Error", error)
-        // return rejectWithValue(error.response.data);
     }
 })
 

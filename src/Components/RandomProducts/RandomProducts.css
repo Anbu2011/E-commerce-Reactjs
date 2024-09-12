@@ -1,0 +1,26 @@
+.grid-container{
+    display: grid;
+    grid-template-columns: 220px 220px 220px 220px 220px;
+    justify-content: center;
+    gap: 25px;
+    background-color: white;
+    margin: 20px;
+}
+.grid-child{
+    margin: 20px 0px;
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+.grid-image{
+    height: 200px;
+    width: 200px;
+    margin-top: 15px;
+    padding: 0;
+}
+.title{
+    height: 17px;
+    overflow: hidden;
+    padding: 0px 5px;
+}

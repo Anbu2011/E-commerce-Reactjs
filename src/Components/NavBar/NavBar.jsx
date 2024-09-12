@@ -16,12 +16,10 @@ const NavBar = () => {
         
             <div className='search-bar'>
                 <SearchIcon className='search-icon'/>
-                {/* <FontAwesomeIcon icon={faSearchengin} className='search-icon'/> */}
                 <input type="text" className="search-input" placeholder='Search for Products and More'/>
             </div>
 
             <div className='cart'>
-                {/* <FontAwesomeIcon icon={faCartShopping} className='cart-icon'/> */}
                 <AddShoppingCartIcon className='cart-icon' />
                 <p className='cart-name'>Cart</p>
             </div>

@@ -1,17 +1,15 @@
 .nav-parent{
-    position: fixed;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content:space-evenly;
 
-    width: 100%;
+    width: auto;
     height: 62.5px;
     background-color: white;
     padding: 2px 0px;
 }
 
-/* logo */
 .logo{
     display: flex;
     flex-direction: column;
@@ -24,7 +22,7 @@
 .explore-products{
     font-size: 12px;
 }
-/* search */
+
 .search-bar{
     position: relative;
     display: inline-block;
@@ -47,7 +45,6 @@
     outline: none;
 }
 
-/* cart , goto-admin*/
 .cart , .goto-admin{
     display: flex;
     flex-direction: row;

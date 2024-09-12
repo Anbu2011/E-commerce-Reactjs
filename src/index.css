@@ -1,7 +1,5 @@
 :root {
   font-family: inter_regular, fallback-inter_regular, Arial, sans-serif;
-  /* line-height: 1.5; */
-  /* font-weight: 400; */
   
   color: black;
   background-color: rgba(241, 242, 244, 1.00);
@@ -14,7 +12,7 @@
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   min-width: 320px;
   min-height: 100vh;
 }
