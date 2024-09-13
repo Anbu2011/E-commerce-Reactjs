@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./AllCategory.css"
 
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const AllCategory = () => {
   
@@ -31,13 +31,14 @@ const AllCategory = () => {
   return (
     <>
       <div className='categories-parent'>
-        {allCategoryArray.map((each) => (
-          <div className='categories'  key={each}>
-            <a href="#" key={each.id}>
-              <img src={categoryImage[each]} alt={each} className='category-image'/>
-              <p className='category-name'>{each}</p>
-            </a>
-          
+        {allCategoryArray.map((category) => (
+          <div className='categories' >
+            <Link to={`/categories/${category}`}>
+              <a href="#">
+                <img src={categoryImage[category]} alt={category} className='category-image'/>
+                <p className='category-name'>{category}</p>
+              </a>
+            </Link>
           </div>
         ))}
       </div>    
