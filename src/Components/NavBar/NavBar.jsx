@@ -4,7 +4,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+
 const NavBar = () => {
+
+    const cartCount = useSelector((state) => state.allProductsInfo.cartCount)
+
   return (
     <>
         <div className='nav-parent'>
@@ -19,10 +26,13 @@ const NavBar = () => {
                 <input type="text" className="search-input" placeholder='Search for Products and More'/>
             </div>
 
-            <div className='cart'>
-                <AddShoppingCartIcon className='cart-icon' />
-                <p className='cart-name'>Cart</p>
-            </div>
+            <Link to='/cart'>
+                <div className='cart'>
+                    <AddShoppingCartIcon />
+                    <p className='cart-name'>Cart</p>
+                    <p className='cart-count'>{cartCount}</p>  
+                </div>
+            </Link>
 
             <div className='goto-admin'>
                 <AdminPanelSettingsIcon />

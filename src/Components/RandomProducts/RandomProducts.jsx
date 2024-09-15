@@ -1,26 +1,17 @@
 import React from 'react'
 import './RandomProducts.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const RandomProducts = () => {
 
-    const navigate = useNavigate()
-
-
     const {allProductArray, productLoading} = useSelector((state) => state.allProductsInfo)
 
-    const randomProducts = []
-    for(let i=0; i<10; i++){
-        let randomNumber = Math.floor(Math.random() * 20 + 1 )
+    const shuffledArray = [...allProductArray].sort(() => 0.5 - Math.random())
+    const randomProducts = shuffledArray.slice(0, 10)
 
-        const eachProduct = allProductArray.find((product)=> product.id === randomNumber )
-
-        if(eachProduct){
-          randomProducts.push(eachProduct)
-        }
-
-    }
+    // const randomNumber = Math.floor(Math.random() * (allProductArray.length - 10))
+    // const randomProducts = allProductArray.slice(randomNumber, randomNumber+10)
 
   return (
     <>
@@ -34,7 +25,6 @@ const RandomProducts = () => {
                   <p>₹{each.price}</p>
                 </a>
               </Link>
-              
             </div>
           ))}
         </div>

@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 import "./AllCategory.css"
 
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const AllCategory = () => {
   
   const {allCategoryArray, categoryLoading} = useSelector((state) => state.allCategoryInfo)
   const {allProductArray, productLoading} = useSelector((state) => state.allProductsInfo)
-  const navigate = useNavigate()
 
   const [categoryImage, setCategoryImage] = useState({})
-  useEffect(() => {
+  
+  const updateCategoryImages = () => {
     if(allCategoryArray.length > 0 && allProductArray.length > 0){
       const categoryImageMap = {};
 
@@ -26,8 +26,14 @@ const AllCategory = () => {
       })
       setCategoryImage(categoryImageMap)
     }
-  }, [allProductArray,allCategoryArray]);
-
+  };
+  useEffect(() => {
+    if(! categoryImage.length){
+      updateCategoryImages()
+    }
+    
+  }, [allProductArray, allCategoryArray, categoryImage.length]);
+  
   return (
     <>
       <div className='categories-parent'>

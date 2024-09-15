@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar/NavBar.jsx'
 import './ProductDetails.css'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../../slices/productsApiSlice.js'
+import { addCartArray, addCartCount, getAllProducts } from '../../slices/productsApiSlice.js'
 
 import StarsIcon from '@mui/icons-material/Stars';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -12,11 +12,12 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 const ProductDetails = () => {
     
     const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getAllProducts())
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllProducts())
+    // }, [dispatch]);
     
     const {allProductArray} = useSelector((state) => state.allProductsInfo)
+    const {cartArray} = useSelector((state) => state.allProductsInfo)
 
     const {Id} = useParams()
     const specificProduct = allProductArray.find((product) =>{
@@ -25,6 +26,17 @@ const ProductDetails = () => {
         }
     })
 
+    const [cartError , setCartError] = useState('')
+    const handleCartClick = (newCartProduct) =>{
+
+        const alreadyAddedToCart = cartArray.find((each) => each.title === newCartProduct.title)
+        if(!alreadyAddedToCart){
+            dispatch(addCartCount());
+            dispatch(addCartArray(newCartProduct))
+        } else{
+            setCartError("This Product is already added to the cart. If you want to add more on this, please increase the Quantity")
+        }
+    }
 
   return (
     <>
@@ -35,6 +47,7 @@ const ProductDetails = () => {
                     <div className='each-product-image'>
                         <img src={`${specificProduct.image}`} alt="" className='product-image'/>
                     </div>
+                    
                     <div className='content'>
                         <div>
                             <p className='content-title'>{specificProduct.title}</p>
@@ -56,12 +69,12 @@ const ProductDetails = () => {
                             <p className='description'>{specificProduct.description}</p>
                         </div>
 
-                        <div className='cat-button-parent'>
-                            <button className='cart-button'>
-                                <AddShoppingCartIcon className='button-cart-icon' />
-                                <label htmlFor="" className='cart-button-label'>ADD TO CART</label>
-                            </button>
-                        </div>
+                        {cartError && <p style={{color:'red'}}>{cartError}</p>}
+
+                        <button onClick={() => handleCartClick(specificProduct)} className='cart-button'>
+                            <AddShoppingCartIcon className='button-cart-icon' />
+                            <label htmlFor="" className='cart-button-label'>ADD TO CART</label>
+                        </button>
                         
                     </div>
                     

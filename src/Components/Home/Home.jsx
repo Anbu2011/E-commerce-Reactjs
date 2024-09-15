@@ -7,22 +7,31 @@ import "./Home.css"
 import {useSelector, useDispatch} from 'react-redux'
 import { getAllProducts } from '../../slices/productsApiSlice.js'
 import { getAllCategory } from '../../slices/categoryApiSlice.js';
-import { useNavigate } from 'react-router-dom'
 
 
 const Home = () => {
+  const {allProductArray, productLoading} = useSelector((state) => state.allProductsInfo)
+  const {allCategoryArray} = useSelector((state) => state.allCategoryInfo)
   
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   
   useEffect(() => {
-    dispatch(getAllProducts())
-    dispatch(getAllCategory())
-  }, [dispatch]);
+    if(! allProductArray.length){
+      dispatch(getAllProducts())
+    }
+    if(! allProductArray.length){
+      dispatch(getAllCategory())
+    }
+    
+  }, [dispatch,allProductArray.length,allCategoryArray.length]);
+
+  if(productLoading){
+    return <p className='loading'>Loading...</p>
+  }
 
   return (
     <>
-      <div className='parent'>
+      <div>
         <NavBar />
         <AllCategory />
         <RandomProducts />

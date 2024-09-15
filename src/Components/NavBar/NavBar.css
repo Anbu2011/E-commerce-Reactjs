@@ -44,8 +44,31 @@
     border: none;
     outline: none;
 }
+.cart{
+    display: flex;
+    align-items: center;
+    gap:2px;
+    position: relative;
+}
 
-.cart , .goto-admin{
+.cart-count{
+    position: absolute;
+    width: 12px;
+    height: 15px;
+    top: 6px;
+    left: 8px;
+    font-weight: 550;
+    color: white;
+    font-size: 16px;
+    background-color: crimson;
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 0px;
+    margin: 0;
+    text-align: center;
+}
+
+.goto-admin{
     display: flex;
     flex-direction: row;
     align-items: center;

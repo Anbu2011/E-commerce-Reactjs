@@ -4,6 +4,9 @@ import axios from 'axios'
 const initialState = {
     allProductArray : [],
     productLoading: false,
+    cartCount : 0,
+    cartArray: [],
+    totalPrice : 0
 }
 
 export const getAllProducts = createAsyncThunk('products/gettingAllProducts', async()=>{
@@ -14,7 +17,41 @@ export const getAllProducts = createAsyncThunk('products/gettingAllProducts', as
 export const productSlice = createSlice({
     name: "allProducts",
     initialState,
-    reducers:{},
+    reducers:{
+        addCartCount: (state)=>{
+            state.cartCount += 1
+        },
+        reduceCartCount: (state)=>{
+            if(state.cartCount > 0){
+                state.cartCount -= 1
+            }
+        },
+
+        addCartArray: (state,action) =>{
+            state.cartArray.push({...action.payload, quantity:1})
+        },
+
+        removeCartProduct: (state,action) =>{
+            let productToBeRemoved = {...action.payload}
+            state.cartArray = state.cartArray.filter((each) => each.id !== productToBeRemoved.id)
+        },
+
+        addQuantity:(state,action) =>{
+            const {productId, quantity} = action.payload;
+            const product = state.cartArray.find(each => each.id === productId);
+            if(product){
+                product.quantity = quantity
+            }
+        },
+
+        addTotalPrice: (state) =>{
+            state.totalPrice = 0
+            
+            state.cartArray.forEach((each) => {
+                state.totalPrice += each.price * each.quantity
+            })
+        }
+    },
     extraReducers: (builder) =>{
         builder
         .addCase(getAllProducts.pending,(state) =>{
@@ -30,5 +67,5 @@ export const productSlice = createSlice({
     }
 })
 
-
+export const {addCartCount, reduceCartCount, addCartArray, removeCartProduct, addQuantity, addTotalPrice} = productSlice.actions;
 export default productSlice.reducer;
