@@ -32,7 +32,6 @@ const IndividualCategory = () => {
 
   return (
     <>
-      <NavBar />
       <AllCategory />
       <div className='grid-container-parent'>
         {specificCategory.map((categoryProduct) =>(

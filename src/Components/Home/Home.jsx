@@ -32,7 +32,6 @@ const Home = () => {
   return (
     <>
       <div>
-        <NavBar />
         <AllCategory />
         <RandomProducts />
 

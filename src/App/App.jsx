@@ -6,17 +6,33 @@ import IndividualCategory from '../Components/IndividualCategory/IndividualCateg
 import Cart from '../Components/Cart/Cart.jsx'
 import ErrorRoute from '../Components/ErrorRoute/ErrorRoute.jsx'
 import './App.css'
+import LoginPage from '../Components/LoginPage/LoginPage.jsx'
+
+import ProtectRoutes from '../Components/ProtectRoutes/ProtectRoutes.jsx'
+import ProtectedLayout from '../Components/ProtectedLayout/ProtectedLayout.jsx'
 
 function App() {
+  
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/productdetails/:Id' element={<ProductDetails />} />
-          <Route path='/categories/:uniqueCategory' element={<IndividualCategory />} />
-          <Route path='/cart' element={<Cart />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route 
+            path='/' 
+            element={
+              <ProtectRoutes>
+                <ProtectedLayout />
+              </ProtectRoutes>
+            }
+          >
+            <Route path='/home' element={<Home />} />
+            <Route path='/productdetails/:Id' element={<ProductDetails />} />
+            <Route path='/categories/:uniqueCategory' element={<IndividualCategory />} />
+            <Route path='/cart' element={<Cart />} />
+            
+          </Route>
           <Route path='*' element={<ErrorRoute />} />
         </Routes>
       </BrowserRouter>

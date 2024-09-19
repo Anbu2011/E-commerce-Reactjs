@@ -1,4 +1,6 @@
 .nav-parent{
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -8,6 +10,8 @@
     height: 62.5px;
     background-color: white;
     padding: 2px 0px;
+
+    z-index: 1000;
 }
 
 .logo{

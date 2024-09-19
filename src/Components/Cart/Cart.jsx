@@ -29,7 +29,6 @@ const Cart = () => {
 
   return (
     <>
-      <NavBar />
       <div className='your-cart-parent'>
         <AddShoppingCartIcon />
         <h2 className='h2-your-cart'>YOUR CART</h2>

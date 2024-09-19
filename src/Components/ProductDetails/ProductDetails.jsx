@@ -41,7 +41,7 @@ const ProductDetails = () => {
   return (
     <>
         <div>
-            <NavBar />
+            {/* <NavBar /> */}
             {specificProduct && 
                 <div className='each-product-parent'>
                     <div className='each-product-image'>
