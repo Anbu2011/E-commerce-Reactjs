@@ -30,7 +30,7 @@ const LoginPage = () => {
         if(formInputs.name === 'anbu' && formInputs.password === 'anbu'){
             localStorage.setItem('isAuthenticated', 'true')
             localStorage.setItem('loginTime', Date.now())
-            localStorage.setItem('expiryTime', Date.now() + 1000 * 60 * 2)
+            localStorage.setItem('expiryTime', Date.now() + 1000 * 60 * 15)
             navigate('/home')
         } else{
             alert('Invalid username and password')
