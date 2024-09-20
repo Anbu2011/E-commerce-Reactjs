@@ -45,7 +45,7 @@ const LoginPage = () => {
             <div className='login-image'>
                 <p className='welcome-text'>Welcome to the E-Commerce</p>
                 <p className='login-description'>Get access to your Orders, Wishlist and Recommendations</p>
-                <img src="shopping-cart-image-Photoroom.png" alt="" className='shopping-cart-login-image'/>
+                <img src="./shopping-cart-image-Photoroom.png" alt="" className='shopping-cart-login-image'/>
             </div>
 
 
