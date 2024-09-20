@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, HashRouter} from 'react-router-dom'
 
 import Home from '../Components/Home/Home.jsx'
 import ProductDetails from '../Components/ProductDetails/ProductDetails.jsx'
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
           <Route 
@@ -35,7 +35,7 @@ function App() {
           </Route>
           <Route path='*' element={<ErrorRoute />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }
