@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import NavBar from '../NavBar/NavBar.jsx';
 import './LoginPage.css'
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import imagePhotoroom from './shopping-cart-image-Photoroom.png'
 
 const LoginPage = () => {
@@ -12,14 +12,6 @@ const LoginPage = () => {
         name : '' ,
         password : ''
     })
-
-    useEffect(() => {
-        const isAuthenticated = localStorage.getItem('isAuthenticated')
-        if(isAuthenticated === 'true'){
-            navigate('/home')
-        }
-    }, [navigate]);
-    
 
     const handleInputChange = (event) => {
         const {name , value} = event.target
@@ -39,6 +31,10 @@ const LoginPage = () => {
     
     }
 
+    const isAuthenticated = localStorage.getItem('isAuthenticated')
+        if(isAuthenticated === 'true'){
+            return <Navigate to='/home' />
+    }
   return (
     <>
         <NavBar />

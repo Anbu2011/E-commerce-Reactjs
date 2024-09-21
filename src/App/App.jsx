@@ -1,20 +1,18 @@
-import {BrowserRouter, Routes, Route, HashRouter} from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
+import LoginPage from '../Components/LoginPage/LoginPage.jsx'
+import ProtectRoutes from '../Components/ProtectRoutes/ProtectRoutes.jsx'
+import ProtectedLayout from '../Components/ProtectedLayout/ProtectedLayout.jsx'
 import Home from '../Components/Home/Home.jsx'
 import ProductDetails from '../Components/ProductDetails/ProductDetails.jsx'
 import IndividualCategory from '../Components/IndividualCategory/IndividualCategory.jsx'
 import Cart from '../Components/Cart/Cart.jsx'
+import MyOrders from '../Components/MyOrders/MyOrders.jsx'
 import ErrorRoute from '../Components/ErrorRoute/ErrorRoute.jsx'
 import './App.css'
-import LoginPage from '../Components/LoginPage/LoginPage.jsx'
-
-import ProtectRoutes from '../Components/ProtectRoutes/ProtectRoutes.jsx'
-import ProtectedLayout from '../Components/ProtectedLayout/ProtectedLayout.jsx'
-import MyOrders from '../Components/MyOrders/MyOrders.jsx'
 
 function App() {
   
-
   return (
     <>
       <HashRouter>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const ProtectRoutes = ({ children }) => {
-  const navigate = useNavigate()
   
   const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem('isAuthenticated') === 'true')
   const [expiring , setExpiring] = useState(false)
@@ -29,7 +28,7 @@ const ProtectRoutes = ({ children }) => {
   if(expiring){
     return <Navigate to='/login' />
   }
-  return isAuthenticated ? children : <Navigate to='/login' />
+  return isAuthenticated ? <div id='protectRoute'>{children}</div> : <Navigate to='/login' />
 }
 
 export default ProtectRoutes

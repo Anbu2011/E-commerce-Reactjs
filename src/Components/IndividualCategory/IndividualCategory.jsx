@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
-import NavBar from '../NavBar/NavBar';
 import AllCategory from '../AllCategory/AllCategory.jsx';
 import './IndividualCategory.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../slices/productsApiSlice';
 import { getAllCategory } from '../../slices/categoryApiSlice';
 import { Link, useParams } from 'react-router-dom';
-
 
 const IndividualCategory = () => {
   const dispatch = useDispatch()

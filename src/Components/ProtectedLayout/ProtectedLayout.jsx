@@ -6,8 +6,14 @@ const ProtectedLayout = () => {
 
   return (
     <>
+      <div id='protectedLayout'>
         <NavBar />
-        <Outlet />
+        <div id='protectedlayout-outlet'>
+          <Outlet />
+        </div>
+        
+      </div>
+        
     </>
   )
 }

@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import NavBar from '../NavBar/NavBar.jsx'
+import React, { useState } from 'react'
 import './ProductDetails.css'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCartArray, addCartCount, getAllProducts } from '../../slices/productsApiSlice.js'
+import { addCartArray, addCartCount } from '../../slices/productsApiSlice.js'
 
 import StarsIcon from '@mui/icons-material/Stars';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-
 const ProductDetails = () => {
     
     const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(getAllProducts())
-    // }, [dispatch]);
     
     const {allProductArray} = useSelector((state) => state.allProductsInfo)
     const {cartArray} = useSelector((state) => state.allProductsInfo)
@@ -41,7 +36,6 @@ const ProductDetails = () => {
   return (
     <>
         <div>
-            {/* <NavBar /> */}
             {specificProduct && 
                 <div className='each-product-parent'>
                     <div className='each-product-image'>

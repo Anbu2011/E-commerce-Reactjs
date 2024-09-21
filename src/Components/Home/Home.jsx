@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import NavBar from '../NavBar/NavBar.jsx';
 import AllCategory from '../AllCategory/AllCategory.jsx';
 import RandomProducts from '../RandomProducts/RandomProducts.jsx';
 import "./Home.css"
@@ -7,7 +6,6 @@ import "./Home.css"
 import {useSelector, useDispatch} from 'react-redux'
 import { getAllProducts } from '../../slices/productsApiSlice.js'
 import { getAllCategory } from '../../slices/categoryApiSlice.js';
-
 
 const Home = () => {
   const {allProductArray, productLoading} = useSelector((state) => state.allProductsInfo)
@@ -19,7 +17,7 @@ const Home = () => {
     if(! allProductArray.length){
       dispatch(getAllProducts())
     }
-    if(! allProductArray.length){
+    if(! allCategoryArray.length){
       dispatch(getAllCategory())
     }
     

@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import './Cart.css'
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+import './Cart.css'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StarsIcon from '@mui/icons-material/Stars';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import { addOrdersArray, addQuantity, addResetCartArray, addTotalPrice, reduceCartCount, removeCartProduct } from '../../slices/productsApiSlice';
-import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 

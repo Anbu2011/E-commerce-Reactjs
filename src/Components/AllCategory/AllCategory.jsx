@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 
 const AllCategory = () => {
   
-  const {allCategoryArray, categoryLoading} = useSelector((state) => state.allCategoryInfo)
-  const {allProductArray, productLoading} = useSelector((state) => state.allProductsInfo)
+  const {allCategoryArray} = useSelector((state) => state.allCategoryInfo)
+  const {allProductArray} = useSelector((state) => state.allProductsInfo)
 
   const [categoryImage, setCategoryImage] = useState({})
   
@@ -40,7 +40,7 @@ const AllCategory = () => {
         {allCategoryArray.map((category) => (
           <div className='categories' >
             <Link to={`/categories/${category}`}>
-              <a href="#">
+              <a href="">
                 <img src={categoryImage[category]} alt={category} className='category-image'/>
                 <p className='category-name'>{category}</p>
               </a>
