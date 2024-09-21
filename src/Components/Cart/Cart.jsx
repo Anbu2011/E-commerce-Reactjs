@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import NavBar from '../NavBar/NavBar'
+import React, { useEffect } from 'react'
 import './Cart.css'
 import { useDispatch, useSelector } from 'react-redux'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import StarsIcon from '@mui/icons-material/Stars';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
-import { addQuantity, addTotalPrice, reduceCartCount, removeCartProduct } from '../../slices/productsApiSlice';
+import { addOrdersArray, addQuantity, addResetCartArray, addTotalPrice, reduceCartCount, removeCartProduct } from '../../slices/productsApiSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const cartArray = useSelector((state)=> state.allProductsInfo.cartArray)
   const totalPrice = useSelector((state)=> state.allProductsInfo.totalPrice)
 
@@ -25,6 +26,13 @@ const Cart = () => {
   const handleQuantityChange = (event, productId) =>{
     const newQuantity = Math.max(Number(event.target.value) , 1)
     dispatch(addQuantity({ productId, quantity: newQuantity}))
+  }
+
+  const handleOrderClick = (totalPrice) =>{
+    dispatch(addOrdersArray({cartArray, totalPrice}))
+    dispatch(addResetCartArray())
+
+    navigate(`/myOrders`)
   }
 
   return (
@@ -61,7 +69,7 @@ const Cart = () => {
                   <div className='cart-quantity-parent'>
                     <label htmlFor="" className='quantity-label'>Quantity </label>
                     <input type="number" value={eachCartProduct.quantity > 1 ? eachCartProduct.quantity : 1} 
-                           onChange={(event) => handleQuantityChange(event, eachCartProduct.id)}  className='quantity-input'/>
+                          onChange={(event) => handleQuantityChange(event, eachCartProduct.id)}  className='quantity-input'/>
                   </div>
 
                   <button onClick={() => handleRemoveProduct(eachCartProduct)} className='remove-cartButton-parent'>
@@ -109,7 +117,7 @@ const Cart = () => {
                 </div>
 
                 <div className='order-button-parent'>
-                  <button className='place-order-button'>
+                  <button onClick={() => handleOrderClick(totalPrice+40+3)} className='place-order-button'>
                     <label htmlFor="" className='placeOrder-button-label'>PLACE ORDER</label>
                   </button>
                 </div>

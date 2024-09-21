@@ -6,7 +6,8 @@ const initialState = {
     productLoading: false,
     cartCount : 0,
     cartArray: [],
-    totalPrice : 0
+    totalPrice : 0,
+    ordersArray : []
 }
 
 export const getAllProducts = createAsyncThunk('products/gettingAllProducts', async()=>{
@@ -50,6 +51,14 @@ export const productSlice = createSlice({
             state.cartArray.forEach((each) => {
                 state.totalPrice += each.price * each.quantity
             })
+        },
+
+        addOrdersArray: (state, action) =>{
+            state.ordersArray.push({ products:[...action.payload.cartArray], totalPrice: action.payload.totalPrice})
+        },
+        addResetCartArray: (state) =>{
+            state.cartArray = []
+            state.cartCount = 0
         }
     },
     extraReducers: (builder) =>{
@@ -67,5 +76,5 @@ export const productSlice = createSlice({
     }
 })
 
-export const {addCartCount, reduceCartCount, addCartArray, removeCartProduct, addQuantity, addTotalPrice} = productSlice.actions;
+export const {addCartCount, reduceCartCount, addCartArray, removeCartProduct, addQuantity, addTotalPrice, addOrdersArray, addResetCartArray} = productSlice.actions;
 export default productSlice.reducer;

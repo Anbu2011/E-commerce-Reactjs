@@ -72,9 +72,35 @@
     text-align: center;
 }
 
+.my-orders-parent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.my-orders-name{
+    padding: 0;
+    margin: 0;
+}
+.my-orders-icon{
+    padding-bottom: 4px;
+}
+
 .goto-admin{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
+.logout-button-parent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 
