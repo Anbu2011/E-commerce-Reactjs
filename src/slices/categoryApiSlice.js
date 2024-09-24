@@ -8,7 +8,7 @@ const initialState = {
 
 export const getAllCategory = createAsyncThunk('category/gettingAllCategory', async() =>{
     try{
-        const response = await axios.get('https://fakestoreapi.com/products/categories')
+        const response = await axios.get('http://localhost:3000/api/CategoryData')
         return response.data
     } catch{
         console.error("Api Error", error)
