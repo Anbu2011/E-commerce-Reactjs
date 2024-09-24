@@ -1,0 +1,18 @@
+:root {
+  font-family: inter_regular, fallback-inter_regular, Arial, sans-serif;
+  
+  color: black;
+  background-color: rgba(241, 242, 244, 1.00);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
