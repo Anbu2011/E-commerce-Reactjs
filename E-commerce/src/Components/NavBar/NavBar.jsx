@@ -6,20 +6,28 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import { addSearchInput } from '../../slices/productsApiSlice';
 
 
 const NavBar = () => {
 
     const cartCount = useSelector((state) => state.allProductsInfo.cartCount)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleLogoutClick = () =>{
         localStorage.setItem('isAuthenticated', 'false')
         localStorage.removeItem('loginTime')
         localStorage.removeItem('expiryTime')
         navigate('/login')
+    }
+
+
+    const handleSearchInput = (event) =>{
+        event.preventDefault()
+        dispatch(addSearchInput(event.target.value))
     }
 
   return (
@@ -33,7 +41,8 @@ const NavBar = () => {
         
             <div className='search-bar'>
                 <SearchIcon className='search-icon'/>
-                <input type="text" className="search-input" placeholder='Search for Products and More'/>
+                <input type="text" onChange={handleSearchInput} className="search-input" placeholder='Search for Products and More'/>
+
             </div>
 
             <Link to='/cart'>
