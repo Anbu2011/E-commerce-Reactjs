@@ -16,7 +16,7 @@ const AllCategory = () => {
       const categoryImageMap = {};
 
       allCategoryArray.forEach((category) =>{
-        categoryImageMap[category] = null;
+        categoryImageMap[category.name] = null;
       })
 
       allProductArray.forEach((product)=>{
@@ -39,10 +39,10 @@ const AllCategory = () => {
       <div className='categories-parent'>
         {allCategoryArray.map((category) => (
           <div className='categories' >
-            <Link to={`/categories/${category}`}>
+            <Link to={`/categories/${category.name}`}>
               <a href="">
-                <img src={categoryImage[category]} alt={category} className='category-image'/>
-                <p className='category-name'>{category}</p>
+                <img src={categoryImage[category.name]} alt={category.name} className='category-image'/>
+                <p className='category-name'>{category.name}</p>
               </a>
             </Link>
           </div>
