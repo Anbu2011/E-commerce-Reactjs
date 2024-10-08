@@ -1,30 +1,9 @@
 import mongoose from "mongoose";
 import productData from './productsData.json' assert { type : 'json' }
 import categoryData from './categoryData.json' assert { type : 'json'}
+import { seedDatabase } from "./Products/products.db.js";
 
 const mongoURI = "mongodb+srv://anbuseenuvasan2002:Gjf3FbIsKV7YfCKO@ecommerce-cluster.lluhg.mongodb.net/?retryWrites=true&w=majority&appName=ecommerce-cluster"
-
-//Schema's
-const productSchema = new mongoose.Schema({
-    id : {type: Number, required: true},
-    title : {type: String, required: true},
-    price : {type: Number, required: true},
-    description : {type: String, required: true},
-    category : {type: String, required: true},
-    image : {type: String, required: true},
-    rating : {
-        rate : {type: Number, required: true},
-        count : {type: Number, required: true}
-    }
-})
-
-const categorySchema = new mongoose.Schema({
-    name : {type: String, required: true}
-})
-
-//Models
-const Product = mongoose.model('ProductModel', productSchema);
-const Category = mongoose.model('CategoryModel', categorySchema)
 
 //Connecting DB
 const connectDB = async () =>{
@@ -32,12 +11,14 @@ const connectDB = async () =>{
         await mongoose.connect(mongoURI);
         console.log('MongoDB Atlas connected successfully')
 
-        await seedDatabase()
+        await seedDatabase(productData)
     } catch (error) {
         console.error('Error connecting to MongoDB Atlas', error.message)
         process.exit(1)
     }
 }
+
+
 
 //Adding data to the DB
 const seedDatabase = async () =>{
@@ -56,4 +37,4 @@ const seedDatabase = async () =>{
     }
 }
 
-export { Product , Category , connectDB }
+export { connectDB }
