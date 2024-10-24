@@ -1,11 +1,15 @@
 import express from 'express'
 import { getAllProducts, createNewProduct, updateProduct, deleteProduct, getProductById } from './products.controller.js';
+
+import {verifyToken} from '../Middlewares/verifyToken.js'
+
 const router = express.Router();
 
-router.get('/showAllProducts', getAllProducts)
-router.get('/showProductByID', getProductById)
-router.post('/createProduct', createNewProduct)
-router.put('/updateProduct', updateProduct)
-router.delete('/deleteProduct', deleteProduct)
+router.get('/', verifyToken, getAllProducts)
+router.get('/:id', verifyToken, getProductById)
+
+router.post('/', createNewProduct)
+router.put('/', updateProduct)
+router.delete('/:id', deleteProduct)
 
 export default router

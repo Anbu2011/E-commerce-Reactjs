@@ -1,38 +1,30 @@
-import { Product } from "./products.model.js";
+import Product from "./products.model.js";
 
-// get all products
-export const getAllProductsFromDB = async () =>{
-    return await Product.find()
-}
+export const ProductDB = {
+    // get all products
+    getAllProducts : async () =>{
+        return await Product.find()
+    },
 
-// get Product By Id
-export const getProductByIdFromDB = async (productId) =>{
-    return await Product.findById(productId)
-}
+    // get Product By Id
+    getProductById: async (productId) =>{
+        return await Product.findOne(productId)
+    },
 
-// create a new product
-export const createNewProductInDB = async (ProductData) =>{
-    return await Product.create(ProductData)
-}
+    // create a new product
+    createNewProduct: async (newproduct) =>{
+        const {id, title, price, description, category, image, rating} = newproduct
+        const addNewProduct = new Product({id, title, price, description, category, image, rating})
+        return await addNewProduct.save()
+    },
 
-// update a product
-export const updateProductInDB = async (ProductId, updateData) =>{
-    return await Product.findByIdAndUpdate(ProductId, updateData, {new: true})
-}
+    // update a product
+    updateProduct: async (productId, updateData) =>{
+        return await Product.findOneAndUpdate({id : productId}, updateData, {new: true})
+    },
 
-
-// delete a product
-export const deleteProductInDB = async (productId) =>{
-    return await Product.findByIdAndDelete(productId)
-}
-
-
-// seed db with productData.json
-export const seedDatabase = async (productData) =>{
-    const productLength = await Product.countDocuments();
-
-    if(productLength === 0){
-        await Product.insertMany(productData)
-        console.log("Products Data added into the DB")
+    // delete a product
+    deleteProduct: async (productId) =>{
+        return await Product.findOneAndDelete({id : productId})
     }
 }

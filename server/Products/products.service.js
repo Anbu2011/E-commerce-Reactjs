@@ -1,24 +1,23 @@
-import { ProductDB} from './products.db.js'
+import {ProductDB} from './products.db.js'
 
 export const ProductService = {
     getAll : async () =>{
-        return await ProductDB.getAllProductsFromDB()
+        return await ProductDB.getAllProducts()
     },
 
     getProductById: async (productId) => {
-        ProductDB.getProductByIdFromDB(productId)
+        return await ProductDB.getProductById({id : productId})
     },
 
-    create : async (data) =>{
-        const product = new ProductDB.createNewProductInDB(data);
-        return await product.save()
+    create : async (newProduct) =>{
+        return await ProductDB.createNewProduct(newProduct);
     },
 
-    update : async (data) =>{
-        return await ProductDB.updateProductInDB({id: data.id}, data)
+    update : async (productId, updateData) =>{
+        return await ProductDB.updateProduct(productId, updateData)
     },
 
-    delete : async (id) =>{
-        return await ProductDB.deleteProductInDB(id)
+    delete : async (productId) =>{
+        return await ProductDB.deleteProduct(productId)
     }
 }

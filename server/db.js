@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import productData from './productsData.json' assert { type : 'json' }
 import categoryData from './categoryData.json' assert { type : 'json'}
-import { seedDatabase } from "./Products/products.db.js";
+import Product from "./Products/products.model.js";
+import Category from "./category/category.model.js";
 
 const mongoURI = "mongodb+srv://anbuseenuvasan2002:Gjf3FbIsKV7YfCKO@ecommerce-cluster.lluhg.mongodb.net/?retryWrites=true&w=majority&appName=ecommerce-cluster"
 
@@ -11,7 +12,7 @@ const connectDB = async () =>{
         await mongoose.connect(mongoURI);
         console.log('MongoDB Atlas connected successfully')
 
-        await seedDatabase(productData)
+        await seedDatabase()
     } catch (error) {
         console.error('Error connecting to MongoDB Atlas', error.message)
         process.exit(1)
