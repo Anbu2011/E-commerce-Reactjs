@@ -10,6 +10,7 @@ import Cart from '../Components/Cart/Cart.jsx'
 import MyOrders from '../Components/MyOrders/MyOrders.jsx'
 import ErrorRoute from '../Components/ErrorRoute/ErrorRoute.jsx'
 import './App.css'
+import RegisterPage from '../Components/RegisterPage/RegisterPage.jsx'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
           <Route 
             path='/' 
             element={

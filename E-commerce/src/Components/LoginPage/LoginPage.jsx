@@ -35,6 +35,11 @@ const LoginPage = () => {
         if(isAuthenticated === 'true'){
             return <Navigate to='/home' />
     }
+
+    const handleRegisterButtonClick =  () =>{
+        navigate('/register')
+    }
+    
   return (
     <>
         <NavBar />
@@ -63,6 +68,8 @@ const LoginPage = () => {
                     
     
                     <button className='login-button'>LOGIN</button>
+
+                    <button onClick={handleRegisterButtonClick} className='login-button'>REGISTER</button>
                 </form>
                 
             </div>
